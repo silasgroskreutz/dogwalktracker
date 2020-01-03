@@ -14,8 +14,8 @@ export default class CreateExercise extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            username: "",
-            description: "",
+            username: '',
+            description: '',
             duration: 0,
             date: new Date(),
             users: []
@@ -37,25 +37,25 @@ export default class CreateExercise extends Component {
     onChangeUsername(e) {
         this.setState({
             username: e.target.value
-        });
+        })
     }
 
     onChangeDescription(e) {
         this.setState({
             Description: e.target.value
-        });
+        })
     }
 
     onChangeDuration(e) {
         this.setState({
             duration: e.target.value
-        });
+        })
     }
 
     onChangeDate(date) {
         this.setState({
             date: date
-        });
+        })
     }
 
     onSubmit(e) {
@@ -68,7 +68,7 @@ export default class CreateExercise extends Component {
             date: this.state.date
         }
 
-        console.log(exercise)
+        console.log(exercise);
 
         axios.post('http://localhost:5000/exercises/add', exercise)
         .then(res => console.log(res.data));
@@ -80,7 +80,7 @@ export default class CreateExercise extends Component {
         return (
             <div>
             <h3>Create New Walk Log</h3>
-            <form onSumbmit={this.onSubmit}>
+            <form onSubmit={this.onSubmit}>
                 <div className="form-group">
                     <label>Username: </label>
                     <select ref="userInput"
@@ -98,14 +98,14 @@ export default class CreateExercise extends Component {
                             }
                         </select>
                 </div>
-
-                <div className="form-group">
-                    <label>Description: </label>
-                    <input type="text"
-                    className="form-control"
-                    value={this.state.description}
-                    onChange={this.onChangeDescription}
-                    />
+                <div className="form-group"> 
+                 <label>Description: </label>
+                    <input  type="text"
+                        required
+                        className="form-control"
+                        value={this.state.description}
+                        onChange={this.onChangeDescription}
+                        />
                 </div>
 
                 <div className="form-group">
