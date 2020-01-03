@@ -44,6 +44,10 @@ export default class EditExercise extends Component {
                     })
                 }
             })
+            .catch((error) => {
+                console.log(error);
+            })
+
     }
 
     onChangeUsername(e) {
@@ -54,7 +58,7 @@ export default class EditExercise extends Component {
 
     onChangeDescription(e) {
         this.setState({
-            Description: e.target.value
+            description: e.target.value
         })
     }
 
@@ -82,10 +86,10 @@ export default class EditExercise extends Component {
 
         console.log(exercise);
 
-        axios.post('http://localhost:5000/exercises/update'+this.props.match.params.id, exercise)
+        axios.post('http://localhost:5000/exercises/update/' + this.props.match.params.id, exercise)
         .then(res => console.log(res.data));
 
-        window.location = "/";
+        window.location = '/';
     }
 
     render() {
@@ -119,7 +123,6 @@ export default class EditExercise extends Component {
                         onChange={this.onChangeDescription}
                         />
                 </div>
-
                 <div className="form-group">
                     <label>Duration (in minutes): </label>
                     <input 
@@ -129,7 +132,6 @@ export default class EditExercise extends Component {
                         onChange={this.onChangeDuration}
                         />
                 </div>
-
                 <div className="form-group">
                     <label>Date: </label>
                     <div>
@@ -143,7 +145,6 @@ export default class EditExercise extends Component {
                 <div className="form-group">
                     <input type="submit" value="Edit Walk Log" className="btn btn-primary" />
                 </div>
-
             </form>
             </div>
         )

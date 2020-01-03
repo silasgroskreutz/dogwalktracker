@@ -32,6 +32,9 @@ export default class CreateExercise extends Component {
                     })
                 }
             })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     onChangeUsername(e) {
@@ -42,7 +45,7 @@ export default class CreateExercise extends Component {
 
     onChangeDescription(e) {
         this.setState({
-            Description: e.target.value
+            description: e.target.value
         })
     }
 
@@ -73,7 +76,7 @@ export default class CreateExercise extends Component {
         axios.post('http://localhost:5000/exercises/add', exercise)
         .then(res => console.log(res.data));
 
-        window.location = "/";
+        window.location = '/';
     }
 
     render() {
@@ -107,7 +110,6 @@ export default class CreateExercise extends Component {
                         onChange={this.onChangeDescription}
                         />
                 </div>
-
                 <div className="form-group">
                     <label>Duration (in minutes): </label>
                     <input 
@@ -117,7 +119,6 @@ export default class CreateExercise extends Component {
                         onChange={this.onChangeDuration}
                         />
                 </div>
-
                 <div className="form-group">
                     <label>Date: </label>
                     <div>
@@ -131,7 +132,6 @@ export default class CreateExercise extends Component {
                 <div className="form-group">
                     <input type="submit" value="Create Walk Log" className="btn btn-primary" />
                 </div>
-
             </form>
             </div>
         )
